@@ -6,6 +6,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { RegisterDialog } from "@/components/register-dialog";
 import { Button } from "@/components/ui/button";
 import { marqueeItems, site } from "@/lib/content";
+import { assetPath } from "@/lib/utils";
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -129,7 +130,7 @@ function CharacterOrb() {
       <div className="absolute inset-4 animate-spin-reverse rounded-full border border-white/10" />
       <div className="animate-float relative h-56 w-56 overflow-hidden rounded-full border border-white/20 bg-background/50 shadow-[0_0_60px_rgba(184,255,60,0.15)] sm:h-72 sm:w-72">
         <Image
-          src="/characters/zero.png"
+          src={assetPath("/characters/zero.png")}
           alt="ZERO"
           fill
           className="object-cover object-top"

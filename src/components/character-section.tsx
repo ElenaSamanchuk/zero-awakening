@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { character } from "@/lib/content";
+import { assetPath } from "@/lib/utils";
 
 export function CharacterSection() {
   return (
@@ -106,7 +107,7 @@ function CharacterVisual() {
         className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-white/10 bg-[#08080f] shadow-[0_0_80px_rgba(184,255,60,0.08)] will-change-transform"
       >
         <Image
-          src="/characters/zero.png"
+          src={assetPath("/characters/zero.png")}
           alt={`Персонаж ${character.codename}`}
           fill
           className="object-cover object-top"
