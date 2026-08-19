@@ -1,0 +1,282 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-display);
+  --color-neon: var(--neon);
+  --color-neon-dim: var(--neon-dim);
+  --color-accent-hot: var(--accent-hot);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --background: #050508;
+  --foreground: #f4f0ff;
+  --card: #0c0c12;
+  --card-foreground: #f4f0ff;
+  --popover: #0c0c12;
+  --popover-foreground: #f4f0ff;
+  --primary: #b8ff3c;
+  --primary-foreground: #050508;
+  --secondary: #14141f;
+  --secondary-foreground: #f4f0ff;
+  --muted: #14141f;
+  --muted-foreground: #8b87a0;
+  --accent: #1a1a28;
+  --accent-foreground: #f4f0ff;
+  --destructive: #ff3c6e;
+  --border: rgba(255, 255, 255, 0.08);
+  --input: rgba(255, 255, 255, 0.1);
+  --ring: #b8ff3c;
+  --neon: #b8ff3c;
+  --neon-dim: rgba(184, 255, 60, 0.15);
+  --accent-hot: #ff3c6e;
+  --surface: #0a0a10;
+  --surface-elevated: #111118;
+  --radius: 0.75rem;
+  --sidebar: #0c0c12;
+  --sidebar-foreground: #f4f0ff;
+  --sidebar-primary: #b8ff3c;
+  --sidebar-primary-foreground: #050508;
+  --sidebar-accent: #14141f;
+  --sidebar-accent-foreground: #f4f0ff;
+  --sidebar-border: rgba(255, 255, 255, 0.08);
+  --sidebar-ring: #b8ff3c;
+  --chart-1: #b8ff3c;
+  --chart-2: #ff3c6e;
+  --chart-3: #6e3cff;
+  --chart-4: #3cc8ff;
+  --chart-5: #ffb83c;
+  --site-chrome-height: 7.75rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+    font-family: var(--font-geist-sans), system-ui, sans-serif;
+  }
+
+  body.custom-cursor-active {
+    cursor: none;
+  }
+
+  body.custom-cursor-active a,
+  body.custom-cursor-active button {
+    cursor: none;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display), var(--font-geist-sans), system-ui, sans-serif;
+  }
+
+  .text-gradient {
+    background: linear-gradient(180deg, #f4f0ff 0%, #b8ff3c 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .glow-neon {
+    box-shadow:
+      0 0 20px rgba(184, 255, 60, 0.25),
+      0 0 60px rgba(184, 255, 60, 0.1);
+  }
+
+  .transform-gpu {
+    transform: translateZ(0);
+  }
+
+  .defer-paint {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 720px;
+  }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .noise-overlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.04;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .scanlines {
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.15) 2px,
+      rgba(0, 0, 0, 0.15) 4px
+    );
+    opacity: 0.25;
+  }
+
+  .glitch-text {
+    position: relative;
+    display: inline-block;
+    color: inherit;
+  }
+
+  .glitch-text-subtle::before {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    color: var(--neon);
+    opacity: 0.35;
+    animation: glitch-subtle 3s infinite ease-in-out alternate;
+    pointer-events: none;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+  backface-visibility: hidden;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes glitch-subtle {
+  0% {
+    transform: translate(0);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translate(1px, 0);
+    opacity: 0.35;
+  }
+  100% {
+    transform: translate(-1px, 0);
+    opacity: 0.2;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+.animate-spin-reverse {
+  animation: spin-reverse 15s linear infinite;
+}

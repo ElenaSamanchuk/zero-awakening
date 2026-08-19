@@ -1,0 +1,9 @@
+{
+  "install": "cd elena/Projects/zero-awakening && npm install",
+  "terminals": [
+    {
+      "name": "dev",
+      "command": "cd elena/Projects/zero-awakening && npm run dev -- -p 3456"
+    }
+  ]
+}
